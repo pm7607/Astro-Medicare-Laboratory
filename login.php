@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'config/db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,9 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_result($stored_password);
                     $stmt->fetch();
 
-                    if (password_verify($password, $stored_password)) {
+                    if ($password === $stored_password) {
+                        $_SESSION['username'] = $username;
                         echo "Login successful!";
-                        // Redirect to a logged-in page or dashboard
+                        // Redirect to the home page
+                        header("Location: home.php");
+                        exit();
                     } else {
                         echo "Invalid password.";
                     }
@@ -42,13 +46,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
 
-            // Hash the password
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            // Check if username already exists
+            $stmt = $conn->prepare("SELECT username FROM users WHERE username = ?");
+            if ($stmt) {
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+                $stmt->store_result();
+
+                if ($stmt->num_rows > 0) {
+                    echo "Username already exists.";
+                    $stmt->close();
+                    exit();
+                }
+                $stmt->close();
+            } else {
+                echo "Error preparing statement: " . $conn->error;
+                exit();
+            }
 
             // Prepare and bind
             $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
             if ($stmt) {
-                $stmt->bind_param("ss", $username, $hashed_password);
+                $stmt->bind_param("ss", $username, $password);
 
                 // Execute the statement
                 if ($stmt->execute()) {

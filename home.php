@@ -1,3 +1,11 @@
+<!-- filepath: /Applications/XAMPP/xamppfiles/htdocs/Astro-Medicare-Laboratory/home.php -->
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +19,21 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container">
-            <a class="navbar-brand text-white fw-bold" href="home.html">Astro Medicare Laboratory</a>
+            <a class="navbar-brand text-white fw-bold" href="home.php">Astro Medicare Laboratory</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-white" href="home.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="appointment.html">Book Appointment</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="test-results.html">Test Results</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-light text-white" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="home.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="appointment.php">Book Appointment</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="test-results.php">Test Results</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="contact.php">Contact Us</a></li>
+                    <li class="nav-item">
+                        <form action="logout.php" method="POST">
+                            <button type="submit" class="btn text-white">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,13 +63,6 @@
             </div>
             <div class="carousel-item">
                 <img src="assets/lab3.jpg" class="d-block w-100" alt="Blood Test">
-                <div class="carousel-caption">
-                    <h2>Quick & Reliable Test Results</h2>
-                    <p>Your health is our priority.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="assets/lab4.jpg" class="d-block w-100" alt="Blood Test">
                 <div class="carousel-caption">
                     <h2>Quick & Reliable Test Results</h2>
                     <p>Your health is our priority.</p>

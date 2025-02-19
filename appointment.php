@@ -1,3 +1,11 @@
+<!-- filepath: /Applications/XAMPP/xamppfiles/htdocs/Astro-Medicare-Laboratory/appointment.php -->
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +25,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-white" href="home.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="appointment.html">Book Appointment</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="test-results.html">Test Results</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-light text-white" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="home.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="appointment.php">Book Appointment</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="test-results.php">Test Results</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="contact.php">Contact Us</a></li>
+                    <li class="nav-item">
+                        <form action="logout.php" method="POST">
+                            <button type="submit" class="btn  text-white">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
