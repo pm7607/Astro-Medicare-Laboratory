@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    padding: 15px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+}
+
+.offer-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #007bff;
+}
+
+.btn {
+    width: 100%;
+    max-width: 200px;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+}
+
+.card h2 {
+    color: #007bff;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    font-weight: bold;
+}
+
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.form-label {
+    display: block;
+    text-align: left;
+}
+
+.small-placeholder::placeholder {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+
+.text-muted {
+    font-size: 0.9rem;
+}
+
+
