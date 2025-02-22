@@ -45,7 +45,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="card shadow p-4">
                     <h2 class="text-center mb-4">Book a Test</h2>
                     <form action="book_appointment.php" method="POST">
-                        <input type="hidden" name="user_id" value="1"> <!-- Replace with actual user ID -->
+                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>"> <!-- Get user ID from session -->
                         <div class="mb-3">
                             <label class="form-label d-block text-start">Name</label>
                             <input type="text" class="form-control" name="name" placeholder="Enter your name" required>

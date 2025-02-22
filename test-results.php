@@ -5,6 +5,19 @@ if (!isset($_SESSION['username'])) {
     header("Location: index.html");
     exit();
 }
+
+include 'config/db_connection.php';
+
+$user_id = $_SESSION['user_id']; // Get user ID from session
+
+// Query to get the appointments for the current user
+$stmt = $conn->prepare("SELECT name, appointment_date, test_type FROM appointments WHERE user_id = ?");
+if ($stmt) {
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($name, $appointment_date, $test_type);
+    $stmt->store_result();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +54,32 @@ if (!isset($_SESSION['username'])) {
 
     <section class="container mt-5">
         <h2>View Your Test Results</h2>
-        <p>Login to access your test reports securely.</p>
-        <a href="login.html" class="btn btn-success">Login to View Results</a>
+        <?php if ($stmt->num_rows > 0): ?>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Appointment Date</th>
+                        <th>Test Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($stmt->fetch()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($name); ?></td>
+                            <td><?php echo htmlspecialchars($appointment_date); ?></td>
+                            <td><?php echo htmlspecialchars($test_type); ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No appointments found.</p>
+        <?php endif; ?>
+        <?php $stmt->close(); ?>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php $conn->close(); ?>
