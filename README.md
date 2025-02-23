@@ -1,5 +1,14 @@
 # Astro-Medicare-Laboratory
 
+## How to Install on Your Local System
+1. Download the project files from the repository.
+2. Start the XAMPP service (ensure Apache and MySQL are running).
+3. Open your web browser and go to `http://localhost/phpmyadmin`.
+4. Create a new database named `astro_medicare`.
+5. Import the provided SQL file into the `astro_medicare` database.
+6. Move all project files to the `htdocs` folder inside your XAMPP installation directory.
+7. Open your browser and navigate to `http://localhost/Astro-Medicare-Laboratory` to access the application.
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
@@ -54,6 +63,9 @@ Astro-Medicare-Laboratory is a web-based application designed to manage laborato
 - `/login` - User login
 - `/logout` - User logout
 
-
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+
+## License
+This project is open-source and available under the MIT License.
+
